@@ -1,0 +1,6 @@
+{
+  "name": "Nolok - Women's Fashion Marketplace Bangladesh",
+  "description": "Discover curated women's fashion from independent boutiques and resellers across Bangladesh on Nolok. Sarees, kurtis, three-piece suits, modest abayas, and contemporary dresses.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

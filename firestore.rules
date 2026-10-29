@@ -1,0 +1,216 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // 1. Global Safety Net: Default-deny all access
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Common Global Helpers
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-\\.]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isBootstrappedAdmin() {
+      return isSignedIn() && request.auth.token.email == 'morsalinnurmahim@gmail.com';
+    }
+
+    function isAdmin() {
+      return isBootstrappedAdmin() || (isSignedIn() && exists(/databases/$(database)/documents/admins/$(request.auth.uid)));
+    }
+
+    function isUser(uid) {
+      return isSignedIn() && request.auth.uid == uid;
+    }
+
+    // Entity Validation Helpers
+    function isValidUser(data) {
+      return data.keys().hasAll(['id', 'email', 'role']) &&
+        data.id is string && isValidId(data.id) &&
+        data.email is string && data.email.size() > 3 && data.email.size() <= 120 &&
+        data.role in ['customer', 'seller', 'admin'] &&
+        (!('displayName' in data) || (data.displayName is string && data.displayName.size() <= 100)) &&
+        (!('phone' in data) || (data.phone is string && data.phone.size() <= 30)) &&
+        (!('boutiqueId' in data) || (data.boutiqueId is string && data.boutiqueId.size() <= 128));
+    }
+
+    function isValidProduct(data) {
+      return data.keys().hasAll(['id', 'title', 'price', 'boutiqueId', 'category', 'status', 'stock']) &&
+        data.id is string && isValidId(data.id) &&
+        data.title is string && data.title.size() >= 2 && data.title.size() <= 200 &&
+        data.price is number && data.price >= 0 &&
+        data.boutiqueId is string && isValidId(data.boutiqueId) &&
+        data.category is string && data.category.size() <= 60 &&
+        data.status in ['published', 'draft', 'pending'] &&
+        data.stock is number && data.stock >= 0 &&
+        (!('description' in data) || (data.description is string && data.description.size() <= 3000)) &&
+        (!('images' in data) || (data.images is list && data.images.size() <= 12));
+    }
+
+    function isValidBoutique(data) {
+      return data.keys().hasAll(['id', 'name', 'slug', 'isApproved', 'status']) &&
+        data.id is string && isValidId(data.id) &&
+        data.name is string && data.name.size() >= 2 && data.name.size() <= 120 &&
+        data.slug is string && data.slug.size() <= 100 &&
+        data.isApproved is bool &&
+        data.status in ['active', 'pending', 'suspended'] &&
+        (!('ownerUid' in data) || (data.ownerUid is string && data.ownerUid.size() <= 128));
+    }
+
+    function isValidOrder(data) {
+      return data.keys().hasAll(['id', 'orderNumber', 'subtotal', 'total', 'overallStatus', 'customer']) &&
+        data.id is string && isValidId(data.id) &&
+        data.orderNumber is string && data.orderNumber.size() <= 60 &&
+        data.subtotal is number && data.subtotal >= 0 &&
+        data.total is number && data.total >= 0 &&
+        data.overallStatus in ['placed', 'confirmed', 'processing', 'shipped', 'delivered', 'cancelled'] &&
+        data.customer is map;
+    }
+
+    function isValidSellerApplication(data) {
+      return data.keys().hasAll(['id', 'shopName', 'email', 'phone', 'status']) &&
+        data.id is string && isValidId(data.id) &&
+        data.shopName is string && data.shopName.size() >= 2 && data.shopName.size() <= 120 &&
+        data.email is string && data.email.size() <= 120 &&
+        data.phone is string && data.phone.size() <= 30 &&
+        data.status in ['pending', 'approved', 'rejected'];
+    }
+
+    function isValidCoupon(data) {
+      return data.keys().hasAll(['code', 'discountType', 'value', 'isActive']) &&
+        data.code is string && data.code.size() <= 30 &&
+        data.discountType in ['percentage', 'flat'] &&
+        data.value is number && data.value >= 0 &&
+        data.isActive is bool;
+    }
+
+    function isValidReview(data) {
+      return data.keys().hasAll(['id', 'productId', 'customerName', 'rating', 'comment']) &&
+        data.id is string && isValidId(data.id) &&
+        data.productId is string && isValidId(data.productId) &&
+        data.customerName is string && data.customerName.size() <= 100 &&
+        data.rating is number && data.rating >= 1 && data.rating <= 5 &&
+        data.comment is string && data.comment.size() <= 1500;
+    }
+
+    function isValidSettings(data) {
+      return data.keys().hasAll(['heroHeadline', 'dhakaDeliveryFee', 'outsideDhakaDeliveryFee']) &&
+        data.heroHeadline is string && data.heroHeadline.size() <= 200 &&
+        data.dhakaDeliveryFee is number &&
+        data.outsideDhakaDeliveryFee is number;
+    }
+
+    function isValidSubscriber(data) {
+      return data.keys().hasAll(['email', 'subscribedAt']) &&
+        data.email is string && data.email.size() > 3 && data.email.size() <= 120 &&
+        data.subscribedAt is string;
+    }
+
+    // 1. Users Collection
+    match /users/{userId} {
+      allow get: if isUser(userId) || isAdmin();
+      allow list: if isAdmin();
+      allow create: if isUser(userId) && isValidUser(incoming());
+      allow update: if (isUser(userId) || isAdmin()) && isValidUser(incoming()) && incoming().id == existing().id;
+      allow delete: if isAdmin();
+    }
+
+    // 2. Products Collection
+    match /products/{productId} {
+      allow get, list: if true;
+      allow create: if isSignedIn() && isValidProduct(incoming()) && (
+        isAdmin() ||
+        (exists(/databases/$(database)/documents/boutiques/$(incoming().boutiqueId)) &&
+         get(/databases/$(database)/documents/boutiques/$(incoming().boutiqueId)).data.ownerUid == request.auth.uid)
+      );
+      allow update: if isSignedIn() && isValidProduct(incoming()) && incoming().id == existing().id && (
+        isAdmin() ||
+        (exists(/databases/$(database)/documents/boutiques/$(existing().boutiqueId)) &&
+         get(/databases/$(database)/documents/boutiques/$(existing().boutiqueId)).data.ownerUid == request.auth.uid)
+      );
+      allow delete: if isAdmin() || (
+        isSignedIn() &&
+        exists(/databases/$(database)/documents/boutiques/$(existing().boutiqueId)) &&
+        get(/databases/$(database)/documents/boutiques/$(existing().boutiqueId)).data.ownerUid == request.auth.uid
+      );
+    }
+
+    // 3. Boutiques Collection
+    match /boutiques/{boutiqueId} {
+      allow get, list: if true;
+      allow create: if (isSignedIn() && isValidBoutique(incoming()) && (
+        isAdmin() || (incoming().isApproved == false && incoming().ownerUid == request.auth.uid)
+      ));
+      allow update: if isSignedIn() && isValidBoutique(incoming()) && incoming().id == existing().id && (
+        isAdmin() ||
+        (existing().ownerUid == request.auth.uid && incoming().isApproved == existing().isApproved)
+      );
+      allow delete: if isAdmin();
+    }
+
+    // 4. Orders Collection
+    match /orders/{orderId} {
+      allow get: if true;
+      allow list: if isAdmin() || (isSignedIn() && resource.data.customerUid == request.auth.uid);
+      allow create: if isValidOrder(incoming());
+      allow update: if isAdmin() || (
+        isSignedIn() && isValidOrder(incoming()) && incoming().id == existing().id && incoming().orderNumber == existing().orderNumber
+      );
+      allow delete: if isAdmin();
+    }
+
+    // 5. Seller Applications Collection
+    match /sellerApplications/{applicationId} {
+      allow get: if isAdmin() || (isSignedIn() && existing().applicantUid == request.auth.uid);
+      allow list: if isAdmin() || (isSignedIn() && resource.data.applicantUid == request.auth.uid);
+      allow create: if isValidSellerApplication(incoming());
+      allow update, delete: if isAdmin();
+    }
+
+    // 6. Coupons Collection
+    match /coupons/{couponId} {
+      allow get, list: if true;
+      allow write: if isAdmin();
+    }
+
+    // 7. Reviews Collection
+    match /reviews/{reviewId} {
+      allow get, list: if true;
+      allow create: if isSignedIn() && isValidReview(incoming()) && incoming().customerUid == request.auth.uid;
+      allow update: if (isAdmin() || (isSignedIn() && existing().customerUid == request.auth.uid)) &&
+                       isValidReview(incoming()) && incoming().id == existing().id;
+      allow delete: if isAdmin() || (isSignedIn() && existing().customerUid == request.auth.uid);
+    }
+
+    // 8. Settings Collection
+    match /settings/{settingId} {
+      allow get, list: if true;
+      allow write: if isAdmin();
+    }
+
+    // 9. Newsletter Subscribers Collection
+    match /newsletterSubscribers/{subscriberId} {
+      allow get, list, update, delete: if isAdmin();
+      allow create: if isValidSubscriber(incoming());
+    }
+
+    // 10. Admins Collection
+    match /admins/{adminId} {
+      allow read, write: if isAdmin();
+    }
+  }
+}

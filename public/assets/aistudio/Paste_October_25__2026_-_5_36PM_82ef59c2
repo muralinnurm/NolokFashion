@@ -1,0 +1,1130 @@
+# Build a Premium Women’s Fashion Marketplace for Bangladesh
+
+Make a complete, responsive, functional e-commerce marketplace exclusively for women's fashion in Bangladesh. The platform should allow individual resellers and small boutiques to open their own online shops, upload fashion products, manage inventory, receive orders, and sell directly to customers.
+
+Customers should be able to discover different sellers, explore fashion collections, compare products, add items to their cart, place orders, and track purchases from one platform.
+
+The website should feel like a premium fashion destination rather than a generic e-commerce template. Think elegant fashion editorial design combined with a smooth, modern online shopping experience.
+
+## Here's the design instruction
+
+I will attach a design inspiration screenshot in Google AI Studio. Analyze it carefully and use it as the primary visual reference for layout, typography, spacing, color balance, image presentation, navigation, product cards, and overall visual direction.
+
+Use the inspiration for its design principles only. Do not copy its branding, logo, text, images, or exact layout. Adapt the visual language specifically to a women-only fashion marketplace serving Bangladesh.
+
+### Overall aesthetic
+
+- Create an elegant, feminine, premium, contemporary fashion-shopping experience.
+- Use generous whitespace, refined typography, high-quality fashion photography, balanced layouts, and subtle details.
+- Make the marketplace feel curated, trustworthy, and visually appealing without making it look exclusive or difficult to use.
+- Combine editorial fashion storytelling with practical e-commerce functionality.
+- Prioritize product photography and make clothing the visual focus.
+- Use a consistent design system across the customer storefront, seller dashboard, and admin dashboard.
+
+### Colors
+
+Use this initial color palette unless the attached inspiration clearly establishes a more suitable direction:
+
+- **Primary background:** Warm ivory `#FAF8F5`
+- **Secondary background:** Soft blush `#F3E7E5`
+- **Primary text:** Deep charcoal `#252321`
+- **Accent color:** Muted rose `#B66F7B`
+- **Secondary accent:** Warm taupe `#A99B8D`
+- **Borders and dividers:** Light beige `#E8E1DB`
+- **Success states:** Restrained green
+- **Error states:** Muted red
+
+Keep most of the interface light. Use rose and blush as accents, not as large blocks on every section. Product imagery should provide most of the color.
+
+### Typography
+
+Use an elegant serif typeface for major editorial headings and a clean sans-serif typeface for navigation, product information, buttons, forms, prices, and dashboard interfaces.
+
+Create a clear hierarchy between the main headline, section headings, product names, prices, descriptions, and supporting labels. Avoid oversized text that pushes products too far below the fold.
+
+### Spacing and layout
+
+- Use a consistent spacing system and aligned content containers.
+- Create spacious editorial sections but keep shopping grids compact enough to display multiple products.
+- Use subtle borders and soft corner radii.
+- Avoid excessive shadows, glassmorphism, neon gradients, and unnecessary decorative elements.
+- Product cards should have consistent image ratios, aligned prices, and predictable interaction patterns.
+- Keep the design visually refined without compromising usability.
+
+### Imagery
+
+Use high-quality, realistic fashion photography featuring adult women wearing contemporary clothing suitable for the Bangladesh market.
+
+Show a diverse range of women's fashion, including modest outfits, traditional South Asian clothing, contemporary dresses, everyday wear, festive clothing, and accessories.
+
+Use realistic sample products such as:
+
+- Elegant printed cotton kurti
+- Embroidered three-piece suit
+- Contemporary linen dress
+- Floral summer co-ord set
+- Festive saree
+- Modest abaya
+- Tailored women's trousers
+- Premium cotton salwar kameez
+
+Use appropriate fashion photography for each category. Do not reuse one image for every product. Do not use images that misrepresent the listed product.
+
+If real product assets are not supplied, use suitable available image assets or placeholders. Keep image presentation consistent and allow products to display multiple images.
+
+### Important design restrictions
+
+- The platform is exclusively for women's fashion.
+- Do not include men's fashion, children's fashion, electronics, groceries, or unrelated marketplace categories.
+- Do not make the website resemble a generic discount-shopping platform.
+- Avoid cluttered product cards, excessive promotional banners, flashing offers, and aggressive pop-ups.
+- Do not invent real seller names, verified reviews, customer testimonials, sales figures, brand partnerships, awards, or business claims.
+- Clearly identify sample sellers, sample reviews, and sample products as demo content where necessary.
+- Do not present a frontend-only demonstration as a fully functional production marketplace.
+- Do not use dead buttons, fake checkout success messages, or interactions that do nothing.
+
+## Website structure and customer-facing pages
+
+Build a multi-page experience with reusable components and a consistent navigation system.
+
+### 1. Announcement bar and header
+
+Create a slim announcement bar at the top for a short message such as:
+
+"Discover independent women's fashion across Bangladesh."
+
+Keep it easy to dismiss and editable from the admin dashboard.
+
+Below it, create a clean header with:
+
+- Brand logo or a temporary text-based brand identity
+- Search bar with a clear search icon
+- Women's fashion category navigation
+- New Arrivals
+- Clothing
+- Traditional Wear
+- Modest Fashion
+- Dresses & Co-ords
+- Accessories
+- Boutiques
+- Wishlist icon
+- Account icon
+- Shopping bag icon with a live cart count
+
+The logo should feel elegant, minimal, and suitable for a fashion marketplace. Do not invent an existing brand identity. Use a temporary name such as "Lunelle" only as a replaceable placeholder.
+
+On desktop, use a spacious horizontal navigation layout. On mobile, use a compact header with a menu icon, centered logo, and shopping bag.
+
+Implement a functional search field with autocomplete suggestions, matching product names, categories, and seller names.
+
+Category menus should open cleanly and allow customers to navigate to relevant collections.
+
+### 2. Hero section
+
+Create a large, editorial fashion hero that immediately communicates the purpose of the platform.
+
+Use a sophisticated composition with a large fashion photograph, carefully positioned typography, and a clear call to action.
+
+Suggested copy:
+
+**Headline:** Her Style. Her Choices. All in One Place.
+
+**Supporting text:** Discover women's fashion from independent boutiques and resellers across Bangladesh.
+
+Primary CTA: "Explore Collections"
+
+Secondary CTA: "Discover Boutiques"
+
+The primary button should open the product discovery or collection page. The secondary button should open the seller directory.
+
+Use a full-width image or a balanced split layout depending on the supplied design inspiration. Keep the headline readable and ensure that the image does not overpower the message.
+
+On mobile, stack the text and image cleanly without cropping out the clothing.
+
+### 3. Shop by category
+
+Create a visually appealing category section using image-led tiles.
+
+Include:
+
+- Dresses & Co-ords
+- Kurtis & Tunics
+- Sarees
+- Three-Piece Suits
+- Modest Fashion
+- Western Wear
+- Festive Collections
+- Bags & Accessories
+
+Each tile should include a relevant image, category name, and subtle arrow or hover effect.
+
+Make every tile clickable and connect it to a filtered product listing.
+
+Use a responsive grid that displays multiple categories on desktop and a compact two-column grid on mobile.
+
+### 4. New arrivals
+
+Create a product discovery section titled "Just Arrived" with a short supporting line such as "Fresh styles from independent boutiques."
+
+Display a responsive product grid with realistic sample products.
+
+Each product card must include:
+
+- Product image
+- Product name
+- Price in Bangladeshi taka (৳)
+- Optional previous price when a genuine demo discount is configured
+- Seller or boutique name
+- Available color options when relevant
+- Wishlist control
+- Quick-view option
+- Product details link
+
+Show a small "New" label only when the product has been marked as new.
+
+Provide a "View All New Arrivals" link that opens the relevant collection page.
+
+Add subtle hover effects, such as revealing a second product image or moving an arrow slightly. Avoid distracting animations.
+
+### 5. Featured fashion collections
+
+Create an editorial section that promotes curated fashion collections rather than relying entirely on standard product grids.
+
+Possible collections include:
+
+- Everyday Elegance
+- Traditional Favorites
+- Modest & Modern
+- Occasion Wear
+- Soft Neutrals
+- Contemporary Essentials
+
+Each collection should feature a large image, short title, concise description, and a "Shop Collection" link.
+
+Collections must be editable by the admin. Do not imply that a collection is seasonal or exclusive unless its configuration supports that claim.
+
+### 6. Boutique and reseller discovery
+
+This is a core feature of the marketplace.
+
+Create a section titled "Meet the Boutiques" that introduces independent fashion sellers.
+
+Show a grid of seller cards with:
+
+- Seller logo or profile image
+- Boutique name
+- Short seller description
+- Product preview images
+- Product count when available
+- Location or service area when provided
+- "Visit Shop" link
+
+Use clearly labeled demo sellers in the initial prototype. Do not imply that demo sellers are real businesses.
+
+Include a "Browse All Boutiques" CTA leading to a dedicated seller directory.
+
+### 7. Bestsellers and popular picks
+
+Create a product grid titled "Popular Picks" to help customers discover items.
+
+The production version must derive popularity from real order data or an admin-defined featured list. For the demo, label the section "Editor's Picks" unless genuine sales data exists.
+
+Include category filters, wishlist actions, and product detail links.
+
+Do not fabricate sales numbers or claims such as "500+ sold."
+
+### 8. Seller invitation section
+
+Encourage individual resellers and small boutiques to join the marketplace.
+
+Use a visually distinct but elegant section with a fashion-related image or a simple editorial illustration.
+
+Suggested copy:
+
+**Headline:** Your Boutique Deserves a Bigger Audience.
+
+**Supporting text:** Bring your women's fashion collection online, manage your products in one place, and connect with customers across Bangladesh.
+
+Primary CTA: "Start Selling"
+
+Secondary CTA: "Learn How It Works"
+
+The primary CTA should lead to seller registration. The secondary CTA should open a seller information page or section.
+
+Do not promise guaranteed sales, a particular number of customers, or guaranteed income.
+
+### 9. Newsletter section
+
+Create a simple newsletter subscription area with the heading:
+
+"Notes on Style"
+
+Supporting text: "Get new collection updates and discover boutiques worth knowing."
+
+Include an email field, consent text, and subscribe button.
+
+Validate email addresses, prevent accidental duplicate submissions, display loading and success/error states, and store subscriptions through the backend.
+
+Do not display a success message unless the subscription has actually been accepted.
+
+### 10. Footer
+
+Create a spacious footer with clear navigation and a refined visual style.
+
+Include:
+
+**Shop**
+- New Arrivals
+- All Products
+- Clothing
+- Traditional Wear
+- Modest Fashion
+- Accessories
+
+**Marketplace**
+- Browse Boutiques
+- Start Selling
+- Seller Guidelines
+- How It Works
+
+**Customer Support**
+- Contact Us
+- Help Center
+- Shipping Information
+- Returns and Refunds
+- Order Tracking
+
+**Company**
+- About Us
+- Privacy Policy
+- Terms and Conditions
+
+Also include social media links, newsletter access, a Bangladesh location context, and a currency indicator for BDT.
+
+Use placeholder links for pages whose content has not yet been supplied, and make them editable. Do not invent a physical address, phone number, or social account.
+
+## Product discovery and shopping pages
+
+### 11. All products page
+
+Build a dedicated marketplace catalog page with a clear heading, breadcrumbs, product count, and a responsive product grid.
+
+Include working filters for:
+
+- Category
+- Price range in BDT
+- Size
+- Color
+- Seller
+- Availability
+- Product condition, if the marketplace supports new or pre-owned clothing
+
+Include sorting options:
+
+- Recommended
+- Newest
+- Price: Low to High
+- Price: High to Low
+
+Filters should update the visible products and the product count. Allow customers to clear all filters.
+
+Use pagination or a load-more mechanism for larger catalogs. Preserve filters while navigating through product results.
+
+On mobile, display filters in a slide-out drawer or bottom sheet.
+
+### 12. Product detail page
+
+Each product must have its own detail page.
+
+Use a two-column desktop layout with a large image gallery on the left and product information on the right.
+
+Include:
+
+- Multiple product images
+- Product title
+- Price in BDT
+- Discounted price only when configured
+- Seller name with a link to the seller's storefront
+- Available sizes
+- Available colors
+- Quantity selector
+- Stock availability
+- Size guide where applicable
+- Product description
+- Fabric and material details when provided
+- Care instructions when provided
+- Shipping information
+- Return policy
+- Add to Wishlist
+- Add to Cart
+- Buy Now
+
+Customers must select required size and color options before adding a configurable product to the cart.
+
+Display validation messages when a required selection is missing or stock is unavailable.
+
+Show related products based on category, style, or seller.
+
+Include a seller information panel and a link to view the seller's other products.
+
+Product reviews should be displayed only when real or clearly identified demo review data exists. In production, only eligible customers who purchased the item should be able to submit a verified-purchase review.
+
+### 13. Seller storefront pages
+
+Every seller should have an individual public storefront with its own unique URL.
+
+Example structure: `/shop/seller-name`
+
+Each storefront should include:
+
+- Seller profile image or logo
+- Boutique name
+- Seller description
+- Location or delivery coverage, if provided
+- Store banner
+- Product catalog
+- Category filters
+- Price sorting
+- Search within the shop
+- Product count
+- Seller contact or inquiry option, if enabled
+- Seller policies and shipping information
+- Available reviews or ratings, when genuine data exists
+
+Show the seller's active products in a consistent grid.
+
+Storefronts should look like part of the same premium marketplace while allowing sellers to maintain their own identity.
+
+Only approved, active sellers should be publicly visible.
+
+### 14. Wishlist
+
+Create a dedicated wishlist page where signed-in customers can save products.
+
+Allow customers to:
+
+- Add and remove products
+- View saved items
+- Move available items to the cart
+- Open product details
+- See when an item is out of stock
+
+Persist the wishlist for signed-in users. For guests, maintain it locally where appropriate and merge it with the account wishlist after login.
+
+### 15. Shopping cart
+
+Build a functional shopping cart page with:
+
+- Product thumbnail
+- Product name
+- Seller name
+- Selected size and color
+- Unit price
+- Quantity controls
+- Stock validation
+- Remove item action
+- Item subtotal
+- Shipping estimate where available
+- Order total
+- Checkout CTA
+
+Support products from multiple sellers in one cart.
+
+Group cart items by seller where useful, and prepare separate seller-level order records during checkout while maintaining a single customer checkout experience.
+
+Revalidate prices, stock, and product availability on the server before placing an order.
+
+Do not allow quantities to exceed available stock.
+
+Persist the cart for signed-in users and preserve guest cart contents where possible.
+
+### 16. Checkout and payment
+
+Create a clean, step-by-step checkout flow with minimal distractions.
+
+**Step 1: Customer details**
+
+Collect:
+- Full name
+- Phone number
+- Email address, where available
+
+**Step 2: Delivery address**
+
+Collect:
+- Division
+- District
+- Area or upazila
+- Full street or delivery address
+- Delivery instructions, optional
+
+Provide a sensible address form for customers in Bangladesh. Use configurable geographic data where available rather than hardcoding an incomplete list.
+
+**Step 3: Delivery method**
+
+Show available shipping options and their actual configured costs.
+
+Support delivery fee calculations based on the selected shipping rules, destination, and seller where relevant.
+
+**Step 4: Payment method**
+
+Prepare support for locally relevant payment options, including:
+
+- Cash on Delivery
+- bKash
+- Nagad
+- Card payment through a supported payment gateway
+
+Only enable online payment methods after the relevant provider integration and credentials are configured. Do not simulate a successful transaction in production.
+
+**Step 5: Order review**
+
+Display all items, seller names, delivery charges, discounts when valid, and the final total in BDT.
+
+Require customers to review the order and accept the applicable terms before submitting it.
+
+After successful order creation, show a real order confirmation page with an order number, payment status, delivery details, and estimated delivery information only when available.
+
+Handle failed payments, duplicate submissions, network errors, and abandoned checkouts gracefully.
+
+### 17. Order tracking
+
+Create an order tracking page for signed-in customers.
+
+Display:
+
+- Order number
+- Order date
+- Seller and product details
+- Payment status
+- Order status
+- Shipping status
+- Delivery address
+- Tracking information when available
+
+Use a clear order timeline:
+
+Order Placed → Confirmed → Processing → Shipped → Delivered
+
+Support cancellation or return requests when permitted by the order's current state and marketplace policy.
+
+Do not show a shipment as dispatched or delivered unless the backend records that status.
+
+## Customer account
+
+### 18. Authentication
+
+Provide customer registration, login, logout, password recovery, and account verification where supported.
+
+Allow registration using an email address and password, with optional phone-based authentication if the selected authentication provider supports it.
+
+Create a clean login and registration experience that matches the main storefront design.
+
+Validate form fields, show clear error messages, protect account data, and maintain secure sessions.
+
+### 19. Customer dashboard
+
+Create a customer account area with a simple sidebar on desktop and a compact navigation layout on mobile.
+
+Include:
+
+- Overview
+- My Orders
+- Order Details
+- Wishlist
+- Saved Addresses
+- Account Information
+- Password and Security
+- Return Requests
+- Logout
+
+The overview should show recent orders, current order statuses, and useful account shortcuts.
+
+Customers should only be able to access their own information and orders.
+
+## Seller onboarding and dashboard
+
+The seller experience is one of the most important parts of this project. Build it as a real working application area, not just a static dashboard screenshot.
+
+Use a distinct but consistent interface: clean white or warm-neutral surfaces, clear tables, restrained accent colors, readable forms, and practical navigation.
+
+### 20. Seller registration
+
+Create a dedicated seller onboarding flow.
+
+Collect:
+
+- Seller's full name
+- Boutique or shop name
+- Email address
+- Phone number
+- Shop description
+- Business or pickup address, where required
+- Preferred product categories
+- Logo or profile image, optional
+- Store banner, optional
+- Seller agreement acceptance
+
+Support individual resellers and small boutiques. Do not require a registered company unless the actual marketplace policy requires it.
+
+Provide fields for any required identity or business verification, but collect sensitive documents only when genuinely necessary and through secure handling.
+
+After submission, create a seller application with a clear status:
+
+- Draft
+- Pending Review
+- Approved
+- Rejected
+- Suspended
+
+Only approved sellers should be able to publish products and receive marketplace orders.
+
+Provide a useful application status screen explaining the next step.
+
+### 21. Seller dashboard overview
+
+Create a protected seller dashboard at a route such as `/seller/dashboard`.
+
+Include a sidebar with:
+
+- Overview
+- Products
+- Add Product
+- Inventory
+- Orders
+- Shipping
+- Storefront Settings
+- Customer Inquiries, if enabled
+- Sales Reports
+- Payouts
+- Notifications
+- Help and Support
+- Logout
+
+The overview page should display actual seller-specific information:
+
+- Total orders
+- Pending orders
+- Products currently listed
+- Low-stock products
+- Gross sales
+- Refunds or cancellations where applicable
+- Net sales where the required fee and refund data exist
+- Recent orders
+- Best-performing products based on real order data
+
+For an empty account, show a useful onboarding state with a clear "Add Your First Product" CTA.
+
+Do not fabricate sales statistics or charts. Clearly distinguish demo data from production data.
+
+### 22. Add and edit products
+
+Build a complete product creation and editing form.
+
+Fields should include:
+
+- Product name
+- Category and subcategory
+- Description
+- Product images
+- Price in BDT
+- Optional compare-at price
+- Available sizes
+- Available colors
+- Fabric and material
+- Fit or style details
+- Care instructions
+- SKU, if used
+- Stock quantity
+- Product variants
+- Shipping weight or dimensions, if needed
+- Return eligibility
+- Product status: Draft, Pending Review, Published, or Rejected
+
+Allow sellers to upload multiple images, reorder them, choose a main image, and remove unwanted images.
+
+Support product variants with separate stock quantities and prices where applicable.
+
+Validate all required fields and display clear errors.
+
+Allow sellers to save drafts and preview products before submission.
+
+Published products must belong to the authenticated seller. Sellers must not be able to edit another seller's products.
+
+If moderation is enabled, new or edited products should follow the configured approval workflow.
+
+### 23. Inventory management
+
+Build an inventory page with searchable and sortable product rows.
+
+Display:
+
+- Product thumbnail
+- Product name
+- SKU
+- Available stock
+- Variant-level stock where relevant
+- Product status
+- Price
+- Last updated date
+
+Allow sellers to update stock quantities and view low-stock warnings.
+
+Automatically prevent new purchases when stock is insufficient.
+
+Update inventory safely when an order is placed. Handle concurrent purchases to prevent overselling.
+
+Maintain a record of inventory changes where practical.
+
+### 24. Seller order management
+
+Build a dedicated seller orders page.
+
+Include filters for:
+
+- New orders
+- Pending confirmation
+- Processing
+- Ready to ship
+- Shipped
+- Delivered
+- Cancelled
+- Return or refund requests
+
+Each order row should display the order number, order date, product summary, customer delivery details as needed, order total for that seller, payment status, and fulfillment status.
+
+The order detail page should let the seller:
+
+- Review ordered items and variants
+- Confirm or reject an order with a reason
+- Update preparation status
+- Mark an order ready for dispatch
+- Add a courier and tracking reference when available
+- Update shipping status according to permitted transitions
+- Review cancellation requests
+- Respond to eligible return requests
+
+Enforce valid status transitions on the backend.
+
+For Cash on Delivery orders, clearly indicate the collection status. For online payments, show the actual gateway-confirmed payment state.
+
+Do not expose unnecessary customer personal information to sellers.
+
+### 25. Seller storefront settings
+
+Allow sellers to manage their public shop identity.
+
+Include editable fields for:
+
+- Store name
+- Store description
+- Logo
+- Banner image
+- Product categories
+- Store contact preferences
+- Delivery coverage
+- Processing time
+- Shipping policy
+- Return policy
+- Store visibility
+
+Generate a unique, URL-safe storefront slug and handle duplicate names.
+
+Show a live preview of the storefront before saving changes.
+
+Require administrative approval for changes where marketplace policy calls for it.
+
+### 26. Seller sales reports and payouts
+
+Create a seller analytics page with date filters and clearly labeled metrics.
+
+Include:
+
+- Orders over time
+- Gross merchandise sales
+- Discounts
+- Refunds
+- Marketplace commission or fees, if configured
+- Net seller earnings
+- Pending payouts
+- Completed payouts
+
+All values must come from actual order, refund, fee, and payout records.
+
+Create a payout history with payout reference, amount, date, and status.
+
+Prepare an integration-ready payout system, but do not claim that money has been transferred unless the relevant payment or payout provider confirms it.
+
+Seller bank or mobile financial service details should be collected only when required and stored securely.
+
+## Admin dashboard
+
+### 27. Protected admin panel
+
+Build a separate admin area at a route such as `/admin`.
+
+Use role-based authorization on the server. Hiding an admin link in the frontend is not sufficient security.
+
+Create an admin sidebar with:
+
+- Overview
+- Seller Applications
+- Sellers
+- Products
+- Categories
+- Orders
+- Customers
+- Payments
+- Refunds and Returns
+- Commissions and Fees
+- Payouts
+- Shipping Rules
+- Homepage Content
+- Coupons and Promotions
+- Newsletter Subscribers
+- Reports
+- Support
+- Platform Settings
+
+Only authorized administrators should be able to access this area.
+
+### 28. Admin overview
+
+Display actual platform-wide data:
+
+- Total orders
+- Gross merchandise sales
+- Active sellers
+- Published products
+- Registered customers
+- Pending seller applications
+- Orders awaiting attention
+- Pending refunds or payouts
+
+Include charts for order volume and sales over time when real data is available.
+
+Use helpful empty states for a new marketplace with no sales.
+
+### 29. Seller approval and management
+
+Allow administrators to:
+
+- Review seller applications
+- View submitted seller information
+- Approve or reject applications
+- Provide rejection reasons
+- Request additional information
+- Suspend or reactivate sellers
+- Review seller product listings
+- View seller order history and marketplace activity
+
+Record administrative actions for accountability.
+
+Suspended sellers must not be able to publish new products or accept new orders, while existing orders remain accessible for appropriate resolution.
+
+### 30. Product and category moderation
+
+Allow administrators to review product submissions and manage the catalog.
+
+Admin actions should include:
+
+- Approve or reject product listings
+- Request changes
+- Edit categories and subcategories
+- Feature products or collections
+- Remove prohibited listings
+- Manage product visibility
+- Review reported products
+
+Create category management that supports the marketplace's women's fashion focus.
+
+Do not include unrelated product categories.
+
+### 31. Orders, commissions, and payment administration
+
+Create an administrative order management system with search, filters, order details, seller-level fulfillment, and payment status.
+
+Support configurable marketplace commission rules, such as a percentage fee or a fixed fee, where appropriate.
+
+The commission amount must be calculated on the server using the configured rule and a clearly defined basis.
+
+Display gross sales, fees, refunds, and seller earnings separately. Do not confuse gross order value with marketplace revenue.
+
+Prepare refund and payout workflows with clear statuses and audit history.
+
+Actual payment capture, refund processing, and payouts must be handled through supported payment provider integrations. Do not fake financial transactions.
+
+### 32. Content and marketplace settings
+
+Allow administrators to manage:
+
+- Homepage hero text and images
+- Homepage collections
+- Featured categories
+- Featured boutiques
+- Product discovery sections
+- Announcement bar
+- Newsletter content
+- Shipping policies
+- Return policies
+- Terms and privacy pages
+- Commission settings
+- Supported payment methods
+- Shipping fee rules
+- Seller onboarding requirements
+
+Make the main promotional content editable without requiring code changes.
+
+Keep content management simple enough for a small marketplace operator.
+
+## Functional marketplace rules
+
+Implement these rules throughout the website.
+
+### Roles and permissions
+
+Support three primary roles:
+
+1. Customer
+2. Seller
+3. Administrator
+
+A user may be a customer and also apply to become a seller.
+
+A seller should receive seller permissions only after approval. Administrators should have separate protected access.
+
+Enforce authorization on the backend for all sensitive operations.
+
+### Product ownership
+
+Each product must be associated with its seller. Sellers may manage only their own products, inventory, and seller-level orders.
+
+### Multi-seller checkout
+
+Allow customers to buy products from multiple sellers in a single checkout.
+
+Create a parent customer order and separate seller-level order records or fulfillment groups so that each seller can manage their own products and shipments.
+
+Calculate the final amount from verified product prices, stock, discounts, shipping fees, and applicable fees on the server.
+
+### Stock and order integrity
+
+- Validate inventory at checkout.
+- Prevent overselling.
+- Prevent duplicate order creation on repeated submissions.
+- Record order status changes.
+- Maintain accurate payment status.
+- Release reserved inventory when an order is cancelled, according to the order and payment rules.
+
+### Notifications
+
+Provide in-app notifications for important events such as:
+
+- Order placed
+- Seller confirms an order
+- Order dispatched
+- Order delivered
+- Payment update
+- Seller application update
+- Product approval or rejection
+- Return or refund update
+
+Use email or SMS notifications only after the relevant provider is configured.
+
+### Search and filtering
+
+Implement working product search, category navigation, sorting, seller filtering, and price filtering.
+
+Use server-side search and filtering when the catalog grows. Keep search state in the URL where practical so customers can share filtered collections.
+
+### Discounts and coupons
+
+Prepare a coupon system with configurable validity dates, usage limits, minimum order value, and eligibility rules.
+
+Validate coupons on the backend. Do not allow discounts to make an order total invalid or bypass seller and marketplace pricing rules.
+
+### Policies
+
+Create editable shipping, cancellation, return, refund, privacy, and marketplace terms pages.
+
+Make the relevant policy visible during checkout and seller onboarding.
+
+Do not invent legal guarantees. Use clearly marked initial policy placeholders where the business owner must supply final terms.
+
+## Bangladesh-specific requirements
+
+Design the platform for customers and independent fashion sellers in Bangladesh.
+
+- Use Bangladeshi taka (৳ BDT) as the default currency.
+- Format prices clearly, for example `৳ 1,250`.
+- Make Bangladesh the default delivery country.
+- Include address fields appropriate for local delivery.
+- Support Cash on Delivery as a configurable payment option.
+- Prepare integrations for bKash, Nagad, and card payments through supported providers.
+- Support configurable delivery fees and delivery areas.
+- Keep all currency calculations accurate and store monetary values in a suitable numeric representation, preferably integer minor units or an equivalent precise decimal strategy.
+- Use a phone number input that supports Bangladesh's country code.
+- Use Asia/Dhaka for default business time display and timestamps, while storing timestamps consistently on the backend.
+- Write all initial website content in clear English, but structure the application so Bangla localization can be added later.
+
+Do not assume any payment provider, courier, seller, or delivery service is already connected. Make integrations configurable.
+
+## Technical implementation requirements
+
+Build a complete working application, not a static visual mockup.
+
+Use the supported application framework and environment provided by Google AI Studio. Choose a maintainable stack that supports a real frontend, persistent database, authentication, file uploads, and server-side business logic.
+
+If Firebase is available in the project, use Firebase Authentication, Cloud Firestore, Cloud Storage, and appropriate server-side functions where suitable. Otherwise, use equivalent supported services.
+
+### Architecture
+
+Organize the application into reusable components and clear feature areas:
+
+- Public storefront
+- Product catalog
+- Product detail
+- Cart and checkout
+- Customer account
+- Seller onboarding
+- Seller dashboard
+- Admin dashboard
+- Shared authentication and authorization
+- Shared design system
+- Backend data and business logic
+
+Keep product cards, category tiles, navigation, forms, tables, modals, and status indicators reusable.
+
+### Database structure
+
+Create a consistent data model for:
+
+- Users and roles
+- Seller profiles and applications
+- Storefront settings
+- Products
+- Product images
+- Product variants and inventory
+- Categories
+- Carts
+- Wishlists
+- Orders
+- Seller order groups
+- Order items
+- Payments
+- Refunds and returns
+- Shipping and tracking
+- Commission rules
+- Payouts
+- Coupons
+- Reviews
+- Notifications
+- Newsletter subscriptions
+- Admin audit logs
+- Marketplace content and settings
+
+Use stable document or record IDs, timestamps, explicit status fields, and ownership relationships.
+
+Design indexes and queries for product discovery, seller product management, and order filtering.
+
+### Security
+
+- Implement server-side role and ownership checks.
+- Apply database security rules to protect customer, seller, and admin data.
+- Validate all user input on both client and server.
+- Keep secret API keys and payment credentials out of frontend code.
+- Store uploaded images securely and validate file types and size limits.
+- Protect payment, checkout, inventory, commission, refund, and payout operations from client-side manipulation.
+- Apply rate limiting or equivalent protection to sensitive public endpoints where supported.
+- Do not expose private customer details or seller financial information to unauthorized users.
+
+### Reliability and performance
+
+- Use image optimization, lazy loading, and responsive image sizes.
+- Keep the initial page load fast.
+- Use pagination for large product lists.
+- Add loading states, skeletons where useful, empty states, and error messages.
+- Handle failed network requests and retryable operations.
+- Prevent duplicate form submissions.
+- Keep forms accessible with proper labels, keyboard navigation, and clear validation.
+- Use semantic HTML and accessible color contrast.
+- Avoid unnecessary animation and heavy dependencies.
+
+### Demo mode and real integrations
+
+Build a usable demonstration with clearly labeled sample data so the marketplace can be explored immediately.
+
+Include demo products, demo boutiques, sample categories, and sample orders as appropriate. Make it clear that this data is illustrative.
+
+Where live services require credentials, show a clear setup state and instructions rather than pretending the integration works.
+
+Do not hardcode fake payment confirmations, seller approvals, order updates, or financial results.
+
+If full backend provisioning cannot be completed automatically, implement as much of the real application as possible and clearly identify the remaining setup requirements. Do not silently replace backend functionality with local-only interactions.
+
+## Responsive behavior
+
+### Desktop
+
+- Use a spacious editorial layout.
+- Display product grids with four or five columns depending on available width.
+- Use horizontal category navigation and a prominent search field.
+- Keep seller and admin dashboards optimized for data tables and sidebar navigation.
+- Use large, high-quality product images and well-balanced hero compositions.
+
+### Tablet
+
+- Reduce product grids to two or three columns.
+- Adapt the header and navigation to the available width.
+- Keep product detail pages readable with a balanced image and information layout.
+- Collapse dashboard sidebars when needed.
+- Ensure filters and forms remain easy to use.
+
+### Mobile
+
+- Use a compact header with a working mobile menu.
+- Keep shopping bag and account access easy to reach.
+- Display product grids in two columns when space permits.
+- Use large enough touch targets for product cards, buttons, and filters.
+- Place catalog filters in a drawer or bottom sheet.
+- Stack product detail images and purchase controls vertically.
+- Keep the Add to Cart action easy to access without obscuring product information.
+- Use mobile-friendly checkout forms and address inputs.
+- Convert dashboard tables into compact cards or horizontally scrollable tables where necessary.
+- Make seller product upload and order management usable on a phone.
+- Prevent horizontal overflow and avoid text that becomes too small to read.
+
+## Interactions and animation
+
+Use subtle, purposeful interactions throughout:
+
+- Smooth dropdown and mobile menu transitions
+- Gentle product image hover effects
+- Clear wishlist state changes
+- Small cart count updates
+- Responsive filter drawers
+- Modal or drawer product quick views
+- Subtle section reveal animations
+- Clear form submission feedback
+- Loading indicators for checkout and dashboard actions
+- Toast messages for successful or failed operations
+
+Respect reduced-motion preferences. Do not use animation that slows down browsing or interrupts shopping.
+
+Every interactive element must have a meaningful action. All links, buttons, filters, forms, tabs, menus, and dashboard controls must work or be clearly marked as unavailable until configured.
+
+## Final design goal
+
+Create a premium women's fashion marketplace built around independent resellers and small boutiques in Bangladesh.
+
+The customer experience should feel like browsing a thoughtfully curated fashion destination: elegant imagery, refined typography, clear categories, appealing product cards, and a simple path from discovery to checkout.
+
+The seller experience should feel practical and empowering, giving small businesses the tools to manage products, stock, orders, storefronts, and earnings without technical knowledge.
+
+The admin experience should provide the control needed to manage sellers, moderate products, oversee orders, configure fees, and maintain the marketplace.
+
+Prioritize visual quality, shopping usability, trustworthy interactions, and a sound technical foundation.
+
+Start by building the complete customer-facing storefront and core shopping flow, then implement authentication, seller tools, and admin controls using the same design system.
+
+The result must be a cohesive, responsive, multi-seller fashion marketplace that can evolve from a polished prototype into a production-ready platform once its backend services, payment providers, shipping rules, and business policies are configured.

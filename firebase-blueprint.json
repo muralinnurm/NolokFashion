@@ -1,0 +1,642 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile with contact info, wishlist and account preferences",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Firebase Auth UID matching document ID",
+          "pattern": "^[a-zA-Z0-9_-]+$"
+        },
+        "email": {
+          "type": "string",
+          "description": "User email address",
+          "maxLength": 120
+        },
+        "displayName": {
+          "type": "string",
+          "description": "Customer full display name",
+          "maxLength": 100
+        },
+        "photoURL": {
+          "type": "string",
+          "description": "Avatar photo URL",
+          "maxLength": 500
+        },
+        "phone": {
+          "type": "string",
+          "description": "Contact phone number in Bangladesh",
+          "maxLength": 20
+        },
+        "role": {
+          "type": "string",
+          "description": "Current active role in the app",
+          "enum": ["customer", "seller", "admin"]
+        },
+        "boutiqueId": {
+          "type": "string",
+          "description": "Associated boutique ID if user is a seller",
+          "maxLength": 128
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Account registration ISO timestamp"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Last update ISO timestamp"
+        }
+      },
+      "required": ["id", "email", "role"]
+    },
+    "Product": {
+      "title": "Product",
+      "description": "Fashion catalog product listing provided by an approved boutique",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique product ID",
+          "pattern": "^[a-zA-Z0-9_-]+$"
+        },
+        "title": {
+          "type": "string",
+          "description": "Product title",
+          "minLength": 2,
+          "maxLength": 200
+        },
+        "price": {
+          "type": "number",
+          "description": "Price in Bangladeshi Taka (BDT)"
+        },
+        "compareAtPrice": {
+          "type": "number",
+          "description": "Original crossed-out price in BDT"
+        },
+        "boutiqueId": {
+          "type": "string",
+          "description": "ID of the selling boutique",
+          "pattern": "^[a-zA-Z0-9_-]+$"
+        },
+        "boutiqueName": {
+          "type": "string",
+          "description": "Display name of the boutique",
+          "maxLength": 120
+        },
+        "category": {
+          "type": "string",
+          "description": "Fashion department/category",
+          "maxLength": 60
+        },
+        "subcategory": {
+          "type": "string",
+          "description": "Specific subcategory or silhouette",
+          "maxLength": 60
+        },
+        "images": {
+          "type": "array",
+          "description": "List of high-resolution image URLs"
+        },
+        "description": {
+          "type": "string",
+          "description": "Product details and craftsmanship description",
+          "maxLength": 2500
+        },
+        "fabric": {
+          "type": "string",
+          "description": "Textile fabric specifications",
+          "maxLength": 100
+        },
+        "care": {
+          "type": "string",
+          "description": "Garment care instructions",
+          "maxLength": 200
+        },
+        "sizes": {
+          "type": "array",
+          "description": "Available clothing sizes"
+        },
+        "colors": {
+          "type": "array",
+          "description": "Available color variants"
+        },
+        "stock": {
+          "type": "number",
+          "description": "Available units in inventory"
+        },
+        "sku": {
+          "type": "string",
+          "description": "Stock keeping unit identifier",
+          "maxLength": 50
+        },
+        "status": {
+          "type": "string",
+          "description": "Publishing status",
+          "enum": ["published", "draft", "pending"]
+        },
+        "condition": {
+          "type": "string",
+          "description": "Item craft or condition type",
+          "maxLength": 50
+        },
+        "isNewArrival": {
+          "type": "boolean",
+          "description": "Tag for new arrival promotion"
+        },
+        "isEditorsPick": {
+          "type": "boolean",
+          "description": "Editorial curator pick"
+        },
+        "featured": {
+          "type": "boolean",
+          "description": "Featured placement on storefront"
+        },
+        "rating": {
+          "type": "number",
+          "description": "Average review score (1.0 to 5.0)"
+        },
+        "reviewCount": {
+          "type": "number",
+          "description": "Total customer reviews"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Creation timestamp"
+        }
+      },
+      "required": ["id", "title", "price", "boutiqueId", "category", "status", "stock"]
+    },
+    "Boutique": {
+      "title": "Boutique",
+      "description": "Verified boutique shop profile and policies",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique boutique document ID",
+          "pattern": "^[a-zA-Z0-9_-]+$"
+        },
+        "name": {
+          "type": "string",
+          "description": "Brand and boutique storefront name",
+          "maxLength": 120
+        },
+        "slug": {
+          "type": "string",
+          "description": "URL slug",
+          "maxLength": 80
+        },
+        "tagline": {
+          "type": "string",
+          "description": "Short branding motto",
+          "maxLength": 200
+        },
+        "description": {
+          "type": "string",
+          "description": "About the boutique story and artisans",
+          "maxLength": 2000
+        },
+        "location": {
+          "type": "string",
+          "description": "City or physical location",
+          "maxLength": 100
+        },
+        "division": {
+          "type": "string",
+          "description": "Bangladesh administrative division",
+          "maxLength": 50
+        },
+        "logo": {
+          "type": "string",
+          "description": "Logo image URL",
+          "maxLength": 500
+        },
+        "banner": {
+          "type": "string",
+          "description": "Cover hero banner image URL",
+          "maxLength": 500
+        },
+        "categories": {
+          "type": "array",
+          "description": "Categories sold by the boutique"
+        },
+        "totalProducts": {
+          "type": "number",
+          "description": "Total catalog products"
+        },
+        "rating": {
+          "type": "number",
+          "description": "Store review rating"
+        },
+        "ordersFulfilled": {
+          "type": "number",
+          "description": "Total fulfilled orders"
+        },
+        "joinedDate": {
+          "type": "string",
+          "description": "Registration date"
+        },
+        "deliveryCoverage": {
+          "type": "string",
+          "description": "Shipping regions supported",
+          "maxLength": 100
+        },
+        "processingTime": {
+          "type": "string",
+          "description": "Order packaging lead time",
+          "maxLength": 100
+        },
+        "policies": {
+          "type": "object",
+          "description": "Shipping and return policies"
+        },
+        "isApproved": {
+          "type": "boolean",
+          "description": "Admin approved merchant status"
+        },
+        "status": {
+          "type": "string",
+          "description": "Store state",
+          "enum": ["active", "pending", "suspended"]
+        },
+        "ownerUid": {
+          "type": "string",
+          "description": "Firebase Auth UID of boutique owner",
+          "maxLength": 128
+        },
+        "phone": {
+          "type": "string",
+          "description": "Contact phone",
+          "maxLength": 30
+        },
+        "email": {
+          "type": "string",
+          "description": "Contact email",
+          "maxLength": 100
+        }
+      },
+      "required": ["id", "name", "slug", "isApproved", "status"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "Customer purchase transaction record",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Order document ID",
+          "pattern": "^[a-zA-Z0-9_-]+$"
+        },
+        "orderNumber": {
+          "type": "string",
+          "description": "Human-readable order tracking number",
+          "maxLength": 50
+        },
+        "customerUid": {
+          "type": "string",
+          "description": "Authenticated user UID if placed while signed in",
+          "maxLength": 128
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Order creation date/time"
+        },
+        "customer": {
+          "type": "object",
+          "description": "Shipping address and recipient contact details"
+        },
+        "deliveryMethod": {
+          "type": "object",
+          "description": "Courier method and pricing"
+        },
+        "paymentMethod": {
+          "type": "string",
+          "description": "Payment gateway or COD",
+          "enum": ["cod", "bkash", "nagad", "card"]
+        },
+        "paymentStatus": {
+          "type": "string",
+          "description": "Payment clearing state",
+          "enum": ["pending", "paid", "verified_on_delivery"]
+        },
+        "subtotal": {
+          "type": "number",
+          "description": "Order subtotal before discount in BDT"
+        },
+        "shippingFee": {
+          "type": "number",
+          "description": "Shipping charge in BDT"
+        },
+        "discount": {
+          "type": "number",
+          "description": "Discount amount in BDT"
+        },
+        "couponCode": {
+          "type": "string",
+          "description": "Applied discount voucher code",
+          "maxLength": 50
+        },
+        "total": {
+          "type": "number",
+          "description": "Final total payable in BDT"
+        },
+        "sellerGroups": {
+          "type": "array",
+          "description": "Line items segmented per boutique vendor"
+        },
+        "overallStatus": {
+          "type": "string",
+          "description": "Overall fulfillment status",
+          "enum": ["placed", "confirmed", "processing", "shipped", "delivered", "cancelled"]
+        }
+      },
+      "required": ["id", "orderNumber", "subtotal", "total", "overallStatus", "customer"]
+    },
+    "SellerApplication": {
+      "title": "SellerApplication",
+      "description": "Boutique merchant onboarding request",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Application document ID",
+          "pattern": "^[a-zA-Z0-9_-]+$"
+        },
+        "applicantUid": {
+          "type": "string",
+          "description": "Firebase Auth UID of applicant",
+          "maxLength": 128
+        },
+        "fullName": {
+          "type": "string",
+          "description": "Applicant legal name",
+          "maxLength": 100
+        },
+        "shopName": {
+          "type": "string",
+          "description": "Proposed boutique brand name",
+          "maxLength": 120
+        },
+        "email": {
+          "type": "string",
+          "description": "Contact email",
+          "maxLength": 120
+        },
+        "phone": {
+          "type": "string",
+          "description": "Contact telephone",
+          "maxLength": 20
+        },
+        "description": {
+          "type": "string",
+          "description": "Brand vision and artisan background",
+          "maxLength": 1500
+        },
+        "pickupAddress": {
+          "type": "string",
+          "description": "Physical workshop or pickup warehouse location",
+          "maxLength": 200
+        },
+        "division": {
+          "type": "string",
+          "description": "Bangladesh administrative division",
+          "maxLength": 50
+        },
+        "categories": {
+          "type": "array",
+          "description": "Categories intended for listing"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Submission timestamp"
+        },
+        "status": {
+          "type": "string",
+          "description": "Application review decision",
+          "enum": ["pending", "approved", "rejected"]
+        },
+        "rejectionReason": {
+          "type": "string",
+          "description": "Admin notes if declined",
+          "maxLength": 300
+        }
+      },
+      "required": ["id", "shopName", "email", "phone", "status"]
+    },
+    "Coupon": {
+      "title": "Coupon",
+      "description": "Promotional campaign discount voucher",
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "Coupon voucher code uppercase",
+          "maxLength": 30
+        },
+        "discountType": {
+          "type": "string",
+          "description": "Calculation basis",
+          "enum": ["percentage", "flat"]
+        },
+        "value": {
+          "type": "number",
+          "description": "Discount value"
+        },
+        "minOrder": {
+          "type": "number",
+          "description": "Minimum basket threshold in BDT"
+        },
+        "validUntil": {
+          "type": "string",
+          "description": "Expiration date"
+        },
+        "isActive": {
+          "type": "boolean",
+          "description": "Whether redemption is enabled"
+        }
+      },
+      "required": ["code", "discountType", "value", "isActive"]
+    },
+    "CustomerReview": {
+      "title": "CustomerReview",
+      "description": "Buyer rating and testimonial for a garment",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Review unique ID",
+          "pattern": "^[a-zA-Z0-9_-]+$"
+        },
+        "productId": {
+          "type": "string",
+          "description": "Target reviewed product ID",
+          "pattern": "^[a-zA-Z0-9_-]+$"
+        },
+        "customerUid": {
+          "type": "string",
+          "description": "Auth UID of the reviewer",
+          "maxLength": 128
+        },
+        "customerName": {
+          "type": "string",
+          "description": "Reviewer display name",
+          "maxLength": 100
+        },
+        "customerCity": {
+          "type": "string",
+          "description": "City or district in Bangladesh",
+          "maxLength": 60
+        },
+        "rating": {
+          "type": "number",
+          "description": "Rating out of 5"
+        },
+        "date": {
+          "type": "string",
+          "description": "Publication date"
+        },
+        "comment": {
+          "type": "string",
+          "description": "Detailed review comments",
+          "maxLength": 1000
+        },
+        "verifiedPurchase": {
+          "type": "boolean",
+          "description": "Whether buyer has verified purchase"
+        }
+      },
+      "required": ["id", "productId", "customerName", "rating", "comment"]
+    },
+    "PlatformSettings": {
+      "title": "PlatformSettings",
+      "description": "Global marketplace fees, announcements, and delivery configurations",
+      "type": "object",
+      "properties": {
+        "announcementText": {
+          "type": "string",
+          "description": "Top announcement ticker copy",
+          "maxLength": 200
+        },
+        "announcementVisible": {
+          "type": "boolean",
+          "description": "Toggle announcement bar"
+        },
+        "commissionRatePercent": {
+          "type": "number",
+          "description": "Marketplace platform commission"
+        },
+        "heroHeadline": {
+          "type": "string",
+          "description": "Hero section banner headline",
+          "maxLength": 150
+        },
+        "heroSubtext": {
+          "type": "string",
+          "description": "Hero section supporting text",
+          "maxLength": 300
+        },
+        "dhakaDeliveryFee": {
+          "type": "number",
+          "description": "Standard delivery fee inside Dhaka"
+        },
+        "outsideDhakaDeliveryFee": {
+          "type": "number",
+          "description": "Standard delivery fee outside Dhaka"
+        },
+        "expressDhakaDeliveryFee": {
+          "type": "number",
+          "description": "Express same-day fee in Dhaka"
+        }
+      },
+      "required": ["heroHeadline", "dhakaDeliveryFee", "outsideDhakaDeliveryFee"]
+    },
+    "NewsletterSubscriber": {
+      "title": "NewsletterSubscriber",
+      "description": "Customer email opt-in for seasonal collections and boutique launches",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Document ID (sanitized email or uuid)",
+          "pattern": "^[a-zA-Z0-9_.-]+$"
+        },
+        "email": {
+          "type": "string",
+          "description": "Subscriber email address",
+          "maxLength": 120
+        },
+        "subscribedAt": {
+          "type": "string",
+          "description": "Date of subscription"
+        }
+      },
+      "required": ["email", "subscribedAt"]
+    },
+    "Admin": {
+      "title": "Admin",
+      "description": "Authorized administrator reference",
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "Admin email address",
+          "maxLength": 120
+        },
+        "role": {
+          "type": "string",
+          "description": "Super admin or admin",
+          "enum": ["admin", "superadmin"]
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Date role granted"
+        }
+      },
+      "required": ["email", "role"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "Private user account profile, address book, and order references"
+    },
+    "/products/{productId}": {
+      "schema": "Product",
+      "description": "Publicly browseable fashion products created by boutiques"
+    },
+    "/boutiques/{boutiqueId}": {
+      "schema": "Boutique",
+      "description": "Public boutique storefront profiles and policies"
+    },
+    "/orders/{orderId}": {
+      "schema": "Order",
+      "description": "Customer orders and fulfillment status"
+    },
+    "/sellerApplications/{applicationId}": {
+      "schema": "SellerApplication",
+      "description": "Seller boutique onboarding applications"
+    },
+    "/coupons/{couponId}": {
+      "schema": "Coupon",
+      "description": "Discount voucher codes for promotional checkout"
+    },
+    "/reviews/{reviewId}": {
+      "schema": "CustomerReview",
+      "description": "Product customer feedback and ratings"
+    },
+    "/settings/{settingId}": {
+      "schema": "PlatformSettings",
+      "description": "Global storefront settings and rates"
+    },
+    "/newsletterSubscribers/{subscriberId}": {
+      "schema": "NewsletterSubscriber",
+      "description": "Subscribed newsletter email list"
+    },
+    "/admins/{adminId}": {
+      "schema": "Admin",
+      "description": "Marketplace administrator records"
+    }
+  }
+}
